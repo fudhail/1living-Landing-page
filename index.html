@@ -40,23 +40,23 @@
           </a>
 
           <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span
-              class="visually-hidden">Toggle
+            class="visually-hidden">Toggle
               navigation</span><span class="navbar-toggler-icon"></span></button>
 
 
           <div class="collapse navbar-collapse" id="navcol-1" style="color: #eddbd9;">
             <ul class="navbar-nav mx-auto" style="color: #eddbd9;">
-              <li class="nav-item" style="color: #eddbd9;"><a class="nav-link active" href="index.html"
+              <li class="nav-item" style="color: #eddbd9;"><a onclick="myFunction()" class="nav-link active" href="index.html"
                   style="color: rgb(237,219,217);font-weight: bold;">Home</a></li>
               <li class="nav-item" style="color: #eddbd9;"></li>
-              <li class="nav-item" style="color: #eddbd9;"><a class="nav-link" href="#hitw"
+              <li class="nav-item" style="color: #eddbd9;"><a onclick="myFunction()" class="nav-link" href="#hitw"
                   style="color: rgb(237,219,217);" target="_top">Process</a></li>
               <li class="nav-item"></li>
-              <li class="nav-item" style="color: #eddbd9;"><a class="nav-link" href="#benefits"
+              <li class="nav-item" style="color: #eddbd9;"><a onclick="myFunction()" class="nav-link" href="#benefits"
                   style="color: rgb(237,219,217);">Benefits</a></li>
-              <li class="nav-item" style="color: #eddbd9;"><a class="nav-link active" style="color: rgb(237,219,217);"
+              <li class="nav-item" style="color: #eddbd9;"><a onclick="myFunction()" class="nav-link active" style="color: rgb(237,219,217);"
                   href="#contact">Contact Us</a></li>
-            </ul><a class="btn btn-primary shadow" role="button" href="#Waitlist" data-bss-hover-animate="pulse"
+            </ul><a class="btn btn-primary shadow" role="button" onclick="myFunction()" href="#Waitlist" data-bss-hover-animate="pulse"
               style="padding-right: 28px;padding-left: 28px;background: #01baef;font-weight: bold;color: #1d2228;"><span
                 style="color: rgb(249, 249, 249);">JOIN</span></a>
           </div>
@@ -452,6 +452,12 @@
       })
     })
   </script>
+  <script>
+    const tt = document.querySelector("#navcol-1");
+    function myFunction() {
+      tt.classList.remove("show");
+    }
+    </script>
 </body>
 
 </html>
