@@ -227,7 +227,8 @@ color:#fff;
 
 @media (min-width:600px) {
   .tab_benefits_img {
-    max-width: 610px;
+    display: block;
+    max-width: 600px;
     max-height: auto;
   }
 }
@@ -242,6 +243,7 @@ color:#fff;
 
 @media (min-width:640px) {
   .tab_benefits_img {
+    display: block;
     max-width: 640px;
     max-height: auto;
   }
@@ -257,6 +259,7 @@ color:#fff;
 
 @media (min-width:680px) {
   .tab_benefits_img {
+    display: block;
     max-width: 680px;
     max-height: auto;
   }
@@ -272,6 +275,7 @@ color:#fff;
 
 @media (min-width:720px) {
   .tab_benefits_img {
+    display: block;
     max-width: 720px;
     max-height: auto;
   }
@@ -287,6 +291,7 @@ color:#fff;
 
 @media (min-width:760px) {
   .tab_benefits_img {
+    display: block;
     max-width: 760px;
     max-height: auto;
   }
@@ -302,6 +307,7 @@ color:#fff;
 
 @media (min-width:808px) {
   .tab_benefits_img {
+    display: block;
     max-width: 808px;
     max-height: auto;
   }
@@ -317,6 +323,7 @@ color:#fff;
 
 @media (min-width:850px) {
   .tab_benefits_img {
+    display: block;
     max-width: 850px;
     max-height: auto;
   }
