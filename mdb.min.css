@@ -11431,7 +11431,7 @@ i.flag-zw:before {
   transition: all 0.3s ease-in-out;
 }
 .form-control {
-  min-height: 3rem;
+  
   padding-top: 4px;
   padding-left: 2rem;
   padding-right: 2rem;
@@ -11477,7 +11477,7 @@ i.flag-zw:before {
   padding-right: 2rem !important;
 }
 .form-outline .form-control {
-  min-height: 4rem;
+ 
   padding: 5.33em 0.75em;
   border: 0;
   background: transparent;
