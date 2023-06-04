@@ -161,14 +161,14 @@
                   expand our listings and assist others in finding their ideal
                   living spaces. Start referring now to unlock benefits!
                 </p>
-                <button href="#" class="btn btn-primary">Refer a Space</button>
+                <button href="#" id="referspace" class="btn btn-primary">Refer a Space</button>
               </div>
             </div>
           </div>
-          <p class="card-text" style="color: #1d2228">
+          <p class="card-text" id="req" style="color: #1d2228">
             Want to know the latest status of your referrals?
             
-            <a onclick="sendreq()" href="" style="color: #01baef">click here</a> to request an
+            <a onclick="sendreq()" href="" style="color: #01baef" >click here</a> to request an
             update
           </p>
         </div>
@@ -547,6 +547,9 @@
         const signin = document.getElementById("signin-button");
         const signout = document.getElementById("signout-button");
         const heading = document.getElementById("heading");
+        const r = document.getElementById("referspace");
+        const sendbtn = document.getElementById("send-btn");
+        const req = document.getElementById("req");
 
         if (sessionStorage.getItem("user")) {
           signin.style.display = "none";
@@ -560,6 +563,10 @@
           signout.style.display = "none";
           signin.style.display = "block";
           heading.innerHTML = "<span>Sign in </span> To Continue";
+          r.disabled = true;
+          sendbtn.disabled = true;
+          req.style.display = "none";
+
         }
       }
 
