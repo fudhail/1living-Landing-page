@@ -363,19 +363,14 @@
                 sessionStorage.getItem("code"),
           method: "post",
           success: function (response) {
-            e.target.reset();
-            t.classList.remove("visually-hidden");
-            setTimeout(function () {
-              // Closing the alert
-              t.classList.add("visually-hidden");
-            }, 2500);
-            t22disabled = false;
+            alert("request sent");
           },
           error: function (err) {
             alert("Something Error");
-            t22disabled = false;
+            
           },
         });
+        alert("request sent");
     
       }
       
