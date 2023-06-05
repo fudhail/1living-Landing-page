@@ -12,6 +12,13 @@
   src:
        url('Unbounded.ttf') format('truetype');
 }
+
+.sign_in_section {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: baseline;
+}
 p{
   font-family: prompt;
  
