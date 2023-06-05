@@ -4,14 +4,12 @@
   padding: 0;
   color: #1d2228;
   font-family: Unbounded;
-  src: "Unbounded.ttf";
-  
+
   scroll-behavior: smooth;
 }
 @font-face {
-  font-family: 'MyWebFont';
-  src:
-       url('Unbounded.ttf') format('truetype');
+  font-family: "MyWebFont";
+  src: url("Unbounded.ttf") format("truetype");
 }
 
 .sign_in_section {
@@ -20,9 +18,8 @@
   justify-content: space-between;
   align-items: baseline;
 }
-p{
+p {
   font-family: prompt;
- 
 }
 .navbar {
   background: #1d2228;
@@ -66,17 +63,6 @@ p{
   height: 80px;
 }
 
-.navbar__links {
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 150px;
-  text-decoration: none;
-  height: 100%;
-  transition: all 0.3s ease;
-}
-
 .navbar__btn {
   display: flex;
   justify-content: center;
@@ -103,11 +89,6 @@ p{
   transition: all 0.3s ease;
 }
 
-.navbar__links:hover {
-  color: #01baef;
-  transition: all 0.3s ease;
-}
-
 @media screen and (max-width: 960px) {
   .navbar__container {
     display: flex;
@@ -119,93 +100,28 @@ p{
     padding: 0;
   }
 
-  .navbar__menu {
-    display: grid;
-    grid-template-columns: auto;
-    margin: 0;
-    width: 100%;
-    position: absolute;
-    top: -1000px;
-    opacity: 1;
-    transition: all 0.5s ease;
-    z-index: -1;
-  }
-
-  .navbar__menu.active {
-    background: #1d2228;
-    top: 100%;
-    opacity: 1;
-    transition: all 0.5s ease;
-    z-index: 99;
-    height: 60vh;
-    font-size: 1.6rem;
-  }
-
   #navbar__logo {
     padding-left: 25px;
   }
 
-  .navbar__toggle .bar {
-    width: 25px;
-    height: 3px;
-    margin: 5px auto;
-    transition: all 0.3s ease-in-out;
-    background: #fff;
-  }
-
-  .navbar__item {
-    width: 100%;
-  }
-
-  .navbar__links {
-    
-    padding: 2rem;
-    width: 100%;
-    display: table;
-  }
-
   .navbar__btn {
-    padding-bottom: 2rem;
+    padding-bottom: 1rem;
   }
 
   .button {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80%;
-    height: 80px;
-    margin: 0;
-  }
+    width: auto;
 
-  #mobile-menu {
-    position: absolute;
-    top: 20%;
-    right: 5%;
-    transform: translate(5%, 20%);
-  }
-
-  .navbar__toggle .bar {
-    display: block;
-    cursor: pointer;
-  }
-
-  #mobile-menu.is-active .bar:nth-child(2) {
-    opacity: 0;
-  }
-
-  #mobile-menu.is-active .bar:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-  }
-
-  #mobile-menu.is-active .bar:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
+    margin-top: 1rem;
   }
 }
 
 /* Hero Section */
 .hero {
   background: #ffffff;
-  
+
   padding-top: 5rem;
   padding-bottom: 7rem;
 }
@@ -486,7 +402,6 @@ p{
 
 /* Services Section */
 .services {
- 
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -494,12 +409,11 @@ p{
   height: 100%;
   padding-top: 5rem;
   padding-bottom: 7rem;
-  
 }
 
 .services h1 {
   background-color: #1d2228;
- 
+
   background-size: 100%;
   -webkit-background-clip: text;
   -moz-background-clip: text;
@@ -517,6 +431,7 @@ p{
 
 .services__card {
   margin: 10px;
+  padding: 2rem;
   height: 425px;
   width: 300px;
   border-radius: 4px;
@@ -525,28 +440,29 @@ p{
   justify-content: center;
   color: #fff;
 
-  background: #F0F4F7;
+  background: #f0f4f7;
   transition: 0.3s ease-in;
 }
 
 .services__card:nth-child(1) {
-  background: #BDDCFF; /* fallback for old browsers */
+  background: #bddcff; /* fallback for old browsers */
 
- /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .services__card:nth-child(3) {
-  background: #D0FFDD; 
+  background: #d0ffdd;
 }
 
 .services__card h2 {
   text-align: center;
+  margin-bottom: 1.5rem;
 }
 
 .services__card p {
-  text-align: center;
-  margin-top: 24px;
-  font-size: 20px;
+  text-align: justify;
+
+  font-size: 15px;
 }
 
 .services__btn {
