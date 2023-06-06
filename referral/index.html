@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="google-signin-client_id"
+      content="214439007810-h85ano8dmtuojt8tapmvnc2gnjgmq3j6.apps.googleusercontent.com"
+    />
+    <title>Referal</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,400;0,500;0,600;1,300;1,400&family=Unbounded:wght@200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="stylesheet" href="mdb.min.css" />
+  </head>
+
+  <body>
+    <style>
+      .tooltip {
+        position: relative;
+        display: inline-block;
+      }
+
+      .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 140px;
+        background-color: #555;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px;
+        position: absolute;
+        z-index: 1;
+        bottom: 150%;
+        left: 50%;
+        margin-left: -75px;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+
+      .tooltip .tooltiptext::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #555 transparent transparent transparent;
+      }
+
+      .tooltip:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+      }
+    </style>
+    <!-- Navbar Section -->
+    <nav class="navbar">
+      <div class="navbar__container">
+        <a href="refer.html" id="navbar__logo"
+          ><img src="./logo.svg" alt="Logo"
+        /></a>
+
+        <ul class="navbar__menu">
+          <li>
+            <div
+              id="g_id_onload"
+              data-client_id="214439007810-h85ano8dmtuojt8tapmvnc2gnjgmq3j6.apps.googleusercontent.com"
+              data-context="signin"
+              data-ux_mode="popup"
+              data-callback="handleCredentialResponse"
+              data-auto_prompt="false"
+            ></div>
+
+            <div
+              id="signin-button"
+              class="g_id_signin"
+              data-type="standard"
+              data-shape="rectangular"
+              data-theme="outline"
+              data-text="signin_with"
+              data-size="large"
+              data-logo_alignment="left"
+            ></div>
+          </li>
+          <li class="navbar__btn">
+            <a
+              id="signout-button"
+              class="button"
+              onclick="signOut()"
+              href="#logout"
+              >Sign Out<wk:text name="public_area.logout"
+            /></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero" id="home">
+      <div class="hero__container">
+        <h1 class="hero__heading" id="heading"></h1>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="card" style="background: #bddcff">
+              <div class="card-body">
+                <h5 class="card-title">Refer a Friend</h5>
+                <p class="card-text">
+                  Spread the word, earn rewards! Use our unique referral code to
+                  invite friends to join our platform. Both you and your friend
+                  will receive exclusive benefits. Start referring today!
+                </p>
+                <button
+                  href="#"
+                  data-toggle="modal"
+                  data-target="#exampleModalCenter"
+                  class="btn btn-primary"
+                  id="refer_friend"
+                >
+                  Refer A Friend
+                </button>
+                <div
+                  class="modal fade"
+                  id="exampleModalCenter"
+                  tabindex="-1"
+                  role="dialog"
+                  aria-labelledby="exampleModalCenterTitle"
+                  aria-hidden="true"
+                >
+                  <div
+                    class="modal-dialog modal-dialog-centered"
+                    role="document"
+                  >
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">
+                          Refer a Friend
+                        </h5>
+                        <button
+                          type="button"
+                          class="close"
+                          data-dismiss="modal"
+                          aria-label="Close"
+                        >
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div
+                        class="modal-body"
+                        style="
+                          display: flex;
+                          position: relative;
+                          flex: 1 1 auto;
+                          padding: 1rem;
+                          flex-direction: column;
+                          align-items: center;
+                        "
+                      >
+                        <img src="refer.png" alt="" />
+                        <p>Copy the code and share it among your friends.</p>
+                        <div
+                          class="code"
+                          style="
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            padding-left: 10rem;
+                            padding-right: 1rem;
+                            width: 100%;
+                            height: 4rem;
+                            background: #d0ffdd;
+                            border-radius: 12px;
+                          "
+                        >
+                          <h2 id="code"></h2>
+                          <div class="tooltip">
+                            <img
+                              onclick="myFunction()"
+                              onmouseout="outFunc()"
+                              src="Copy-btn.png"
+                            />
+                            <span
+                              class="tooltiptext"
+                              style="width: fit-content"
+                              id="myTooltip"
+                              >Copy to clipboard</span
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="card" style="background: #d0ffdd">
+              <div class="card-body">
+                <h5 class="card-title">Refer a Space</h5>
+                <p class="card-text">
+                  Earn rewards by referring houses, PG rooms, and more! Help
+                  expand our listings and assist others in finding their ideal
+                  living spaces. Start referring now to unlock benefits!
+                </p>
+                <button
+                  href="#"
+                  id="referspace"
+                  data-toggle="modal"
+                  data-target="#xampleModalCenter"
+                  class="btn btn-primary"
+                >
+                  Refer A Space
+                </button>
+                <div
+                  class="modal fade"
+                  id="xampleModalCenter"
+                  tabindex="-1"
+                  role="dialog"
+                  aria-labelledby="exampleModalCenterTitle"
+                  aria-hidden="true"
+                >
+                  <div
+                    class="modal-dialog modal-dialog-centered"
+                    role="document"
+                  >
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">
+                          Refer a Space
+                        </h5>
+                        <button
+                          type="button"
+                          class="close"
+                          data-dismiss="modal"
+                          aria-label="Close"
+                        >
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <iframe
+                          src="https://docs.google.com/forms/d/e/1FAIpQLSd0yO5YKDFQj8R9Doo-EbicyT73ulsbfsrdfmIEUsMhifor5Q/viewform?embedded=true"
+                          width="450"
+                          height="350"
+                          frameborder="0"
+                          marginheight="0"
+                          marginwidth="0"
+                          >Loading…</iframe
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="card-text" id="req" style="color: #1d2228">
+            Want to know the latest status of your referrals?
+
+            <a onclick="sendreq()" href="" style="color: #01baef">click here</a>
+            to request an update
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- referal -->
+    <section class="py-4 py-xl-5" style="background: #1d2228">
+      <div class="container">
+        <div
+          class="text-white bg-dark border rounded border-0 border-light d-flex flex-column justify-content-between align-items-center flex-lg-row p-4 p-lg-5"
+        >
+          <div class="text-center text-lg-start py-3 py-lg-1">
+            <h2 class="fw-bold mb-2" style="color: white">
+              Do you have a referral code
+            </h2>
+          </div>
+          <form
+            id="submit-form"
+            class="d-flex justify-content-center flex-wrap my-2"
+            method="post"
+          >
+            <div class="my-2">
+              <input
+                class="form-control"
+                type="text"
+                name="referedthrough"
+                placeholder="Referral Code"
+                minlength="6"
+              />
+            </div>
+            <div class="my-2">
+              <button
+                class="btn btn-primary ms-sm-2"
+                id="send-btn"
+                type="submit"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <div class="services" id="services">
+      <h1>Know More</h1>
+      <div class="services__wrapper">
+        <div class="services__card">
+          <h2>Pending
+          </h2>
+          <p>- Your referrals are in pending status by default</p>
+          <p>- You earn no money at this state</p>
+        </div>
+        <div class="services__card">
+          <h2>APPROVED</h2>
+          <p>- When we approach the owner and he agrees, Status of the referred space changes from Pending to Approved
+          </p>
+          <p>- You'll earn Rs.321 at this state</p>
+        </div>
+        <div class="services__card">
+          <h2>Sold
+          </h2>
+          <p>- Once we get tenants for the space referred by you, the status changes to Sold
+          </p>
+          <p>-  You can earn from anywhere between 1000 to 2691
+          </p>
+        </div>
+        <div class="services__card">
+          <h2>Rejected</h2>
+          <p>- Your referrals could be rejected due to various reasons
+          </p>
+          <p> - For instance, owners not approving, space is already referred by other user, etc.</p>
+          <p>- You earn no money at this state</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer
+      class="text-center py-4"
+      style="background: #1d2228; --bs-dark: #1d2228; --bs-dark-rgb: 29, 34, 40"
+    >
+      <div class="container">
+        <div class="row row-cols-1 row-cols-lg-3">
+          <div class="col">
+            <p class="text-muted my-2">
+              Copyright&nbsp;© 2023 1Living.in contact@1living.in
+            </p>
+          </div>
+
+          <div class="col">
+            <ul class="list-inline my-2">
+              <li class="list-inline-item me-4">
+                <a
+                  href="https://www.facebook.com/1Living.in/"
+                  aria-label="Facebook"
+                >
+                  <div
+                    class="bs-icon-sm bs-icon-circle bs-icon-primary bs-icon"
+                    style="
+                      --bs-primary: #f9f9f9;
+                      --bs-primary-rgb: 249, 249, 249;
+                    "
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="1em"
+                      height="1em"
+                      fill="white"
+                      viewBox="0 0 16 16"
+                      class="bi bi-facebook text-secondary"
+                      style="
+                        --bs-secondary: #1d2228;
+                        --bs-secondary-rgb: 29, 34, 40;
+                      "
+                    >
+                      <path
+                        d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"
+                      ></path>
+                    </svg></div
+                ></a>
+              </li>
+              <li class="list-inline-item me-4">
+                <a href="https://twitter.com/1livingIn" aria-label="twitter">
+                  <div
+                    class="bs-icon-sm bs-icon-circle bs-icon-primary bs-icon"
+                    style="
+                      --bs-primary: #f9f9f9;
+                      --bs-primary-rgb: 249, 249, 249;
+                    "
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="1em"
+                      height="1em"
+                      fill="white"
+                      viewBox="0 0 16 16"
+                      class="bi bi-twitter text-secondary"
+                      style="
+                        --bs-secondary: #1d2228;
+                        --bs-secondary-rgb: 29, 34, 40;
+                      "
+                    >
+                      <path
+                        d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"
+                      ></path>
+                    </svg></div
+                ></a>
+              </li>
+              <li
+                class="list-inline-item"
+                style="--bs-primary: #1d2228; --bs-primary-rgb: 29, 34, 40"
+              >
+                <a
+                  href="https://www.instagram.com/1living.in/"
+                  aria-label="Instagram"
+                >
+                  <div
+                    class="bs-icon-sm bs-icon-circle bs-icon-primary bs-icon"
+                    style="
+                      --bs-primary: #f9f9f9;
+                      --bs-primary-rgb: 249, 249, 249;
+                      --bs-secondary: #1d2228;
+                      --bs-secondary-rgb: 29, 34, 40;
+                    "
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="1em"
+                      height="1em"
+                      fill="white"
+                      viewBox="0 0 16 16"
+                      class="bi bi-instagram text-secondary"
+                    >
+                      <path
+                        d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"
+                      ></path>
+                    </svg></div
+                ></a>
+              </li>
+            </ul>
+          </div>
+          <div class="col">
+            <ul class="list-inline my-2">
+              <li class="list-inline-item">
+                <a class="link-secondary" href="#">Privacy Policy</a>
+              </li>
+              <li class="list-inline-item">
+                <a class="link-secondary" href="#">Terms of Use</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+    <!-- referred Code -->
+    <script>
+      function sendreq() {
+        
+        
+        $.ajax({
+          url: "https://script.google.com/macros/s/AKfycbxezvG2cEGv6AcW8CtZtN24Vgz8K4mSiyCVIY8ql3pmwW8tBENJ2JkrQ9pbJrtdq15EhQ/exec",
+          data:
+            "uid=" +
+            sessionStorage.getItem("uid") +
+            "&name=" +
+            sessionStorage.getItem("user") +
+            "&email=" +
+            sessionStorage.getItem("email") +
+            "&code=" +
+            sessionStorage.getItem("code"),
+          method: "post",
+          success: function (response) {
+            alert("request sent");
+            
+          },
+          error: function (err) {
+            alert("Something Error");
+          },
+        });
+        alert("request sent");
+        
+      }
+    </script>
+    <script>
+      function myFunction() {
+        navigator.clipboard.writeText(sessionStorage.getItem("code"));
+
+        var tooltip = document.getElementById("myTooltip");
+        tooltip.innerHTML = "Copied";
+      }
+
+      function outFunc() {
+        var tooltip = document.getElementById("myTooltip");
+        tooltip.innerHTML = "Copy to clipboard";
+      }
+    </script>
+    <script>
+      const t = document.querySelector("#success");
+      const t2 = document.querySelector("#send-btn");
+
+      $("#submit-form").submit((e) => {
+        e.preventDefault();
+        t2.disabled = true;
+        $.ajax({
+          url: "https://script.google.com/macros/s/AKfycbx81i_b187k3IB5jzuZ3PDXkSmBTUVR5i_MyLbpk49scivi-ckLKwOARmevr-A9S08-CQ/exec",
+          data:
+            "uid=" +
+            sessionStorage.getItem("uid") +
+            "&name=" +
+            sessionStorage.getItem("user") +
+            "&email=" +
+            sessionStorage.getItem("email") +
+            "&code=" +
+            sessionStorage.getItem("code") +
+            "&" +
+            $("#submit-form").serialize(),
+          method: "post",
+          success: function (response) {
+            alert("Submitted")
+            e.target.reset();
+            t.classList.remove("visually-hidden");
+            setTimeout(function () {
+              // Closing the alert
+              t.classList.add("visually-hidden");
+            }, 2500);
+            t2.disabled = false;
+          },
+          error: function (err) {
+            alert("Something Error");
+            t2.disabled = false;
+          },
+        });
+      });
+    </script>
+  </body>
+
+  <!-- SIGN IN SCRIPTS -->
+  <!-- google sign in api -->
+  <script src="https://apis.google.com/js/api.js"></script>
+  <!-- easyData script used to read from google sheets -->
+  <script type="text/javascript" src="js/easyData-google-sheets.js"></script>
+
+  <!-- google sign in setup -->
+  <script>
+    const button = document.getElementById("signout_button");
+    button.onclick = () => {
+      google.accounts.id.signOut();
+      google.accounts.id.disableAutoSelect();
+      button.style.display = "none";
+    };
+
+    function handleCredentialResponse(response) {
+      console.log(response);
+      function decodeJwtResponse(token) {
+        var base64Url = token.split(".")[1];
+        var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+        var jsonPayload = decodeURIComponent(
+          atob(base64)
+            .split("")
+            .map(function (c) {
+              return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+            })
+            .join("")
+        );
+
+        return JSON.parse(jsonPayload);
+      }
+      const responsePayload = decodeJwtResponse(response.credential);
+      console.log(response);
+      sessionStorage.setItem("user", responsePayload.name);
+      sessionStorage.setItem("name", responsePayload.given_name);
+      sessionStorage.setItem("uid", responsePayload.sub);
+      sessionStorage.setItem("email", responsePayload.email);
+      loadData();
+    }
+  </script>
+
+  <!-- Read from google sheet and check if user exists -->
+  <script>
+    {
+      {
+        const uniqueCode = generateUniqueCode();
+
+        // generate unique code
+        function generateUniqueCode() {
+          const chars =
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+          const codeLength = 6;
+          let uniqueCode = "";
+
+          for (let i = 0; i < codeLength; i++) {
+            const randomIndex = Math.floor(Math.random() * chars.length);
+            uniqueCode += chars.charAt(randomIndex);
+          }
+
+          return uniqueCode;
+        }
+
+        // API KEY
+        const API_KEY = "AIzaSyBnpdVudA4OzPWR_60E4A7jojBuNMUxFRQ";
+        let flag = 0;
+        function displayResult2(response) {
+          console.log(response.result.values);
+          response.result.values.every((row, index) => {
+            if (row[0] == sessionStorage.getItem("user")) {
+              flag = 1;
+              const code = row[2];
+              sessionStorage.setItem("code", code);
+              return false;
+            } else {
+              return true;
+            }
+          });
+
+          // if user dosent exist add to google sheets
+          if (flag == 0) {
+            $.ajax({
+              url: "https://script.google.com/macros/s/AKfycbxeo89GtOAV58zd7CGeJ6L6dtXFsWxP_YQZutF6sUDCAl6M4ll-o_jqRJcqf8t4blmUSQ/exec",
+
+              data:
+                "uid=" +
+                sessionStorage.getItem("uid") +
+                "&name=" +
+                sessionStorage.getItem("user") +
+                "&email=" +
+                sessionStorage.getItem("email") +
+                "&code=" +
+                uniqueCode +
+                "&referedthrough=not refered",
+              method: "post",
+              success: function (response) {
+                location.reload();
+                alert("hey it worked");
+              },
+              error: function (err) {
+                alert("Something Error");
+              },
+            });
+          } else {
+            console.log("User Already exists");
+            location.reload();
+          }
+        }
+
+        function loadData() {
+          // Spreadsheet ID
+          const spreadsheetId = "1eB_VqRYz9sE0BdL873xpOVjct3Ca7aYotNeCKypjRpE";
+          const range = "C:E";
+          getPublicValues({ spreadsheetId, range }, displayResult2);
+        }
+
+        window.addEventListener("load", (e) => {
+          initOAuthClient({ apiKey: API_KEY });
+        });
+      }
+      //      window.location.href = "dash.html";
+
+      function signOut() {
+        google.accounts.id.disableAutoSelect();
+        sessionStorage.clear();
+        location.reload(); // Refresh the page after signing out
+      }
+
+      // Update the button name based on the user's sign-in status
+      function updateButtonName() {
+        const signin = document.getElementById("signin-button");
+        const signout = document.getElementById("signout-button");
+        const heading = document.getElementById("heading");
+        const refers = document.getElementById("referspace");
+        const referf = document.getElementById("refer_friend");
+        const sendbtn = document.getElementById("send-btn");
+        const req = document.getElementById("req");
+
+        if (sessionStorage.getItem("user")) {
+          signin.style.display = "none";
+          signout.style.display = "block";
+          heading.innerHTML =
+            "<span>Hi </span>" + sessionStorage.getItem("name") + ",";
+          const code = document.getElementById("code");
+
+          code.innerHTML = sessionStorage.getItem("code");
+        } else {
+          signout.style.display = "none";
+          signin.style.display = "block";
+          heading.innerHTML = "<span>Sign in </span> To Continue";
+          refers.disabled = true;
+          referf.disabled = true;
+          sendbtn.disabled = true;
+          req.style.display = "none";
+        }
+      }
+
+      // Call the updateButtonName function on page load
+      window.addEventListener("load", updateButtonName);
+    }
+  </script>
+</html>
