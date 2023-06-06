@@ -79,23 +79,27 @@
 
         <ul class="navbar__menu">
           <li>
-            <div id="g_id_onload"
-            data-client_id="214439007810-h85ano8dmtuojt8tapmvnc2gnjgmq3j6.apps.googleusercontent.com"
-            data-context="signin"
-            data-ux_mode="popup"
-            data-callback="handleCredentialResponse"
-            data-close_on_tap_outside="false"
-            data-itp_support="true">
-       </div>
-       
-       <div class="g_id_signin"
-            data-type="standard"
-            data-shape="rectangular"
-            data-theme="outline"
-            data-text="signin_with"
-            data-size="large"
-            data-logo_alignment="left">
-       </div>
+            <div
+              id="g_id_onload"
+              data-client_id="214439007810-h85ano8dmtuojt8tapmvnc2gnjgmq3j6.apps.googleusercontent.com"
+              data-context="signin"
+              data-ux_mode="popup"
+              data-callback="handleCredentialResponse"
+              data-auto_prompt="false"
+             
+            ></div>
+
+            <div
+            style="display: none;"
+              id="signin-button"
+              class="g_id_signin"
+              data-type="standard"
+              data-shape="rectangular"
+              data-theme="outline"
+              data-text="signin_with"
+              data-size="large"
+              data-logo_alignment="left"
+            ></div>
           </li>
           <li class="navbar__btn"  >
             <a
@@ -114,7 +118,7 @@
     <!-- Hero Section -->
     <div class="hero" id="home">
       <div class="hero__container">
-        <h1 class="hero__heading" id="heading"><Span>Sign in</Span> to Continue</h1>
+        <h1 class="hero__heading" id="heading"></h1>
 
         <div class="row">
           <div class="col-sm-6">
@@ -127,6 +131,7 @@
                   will receive exclusive benefits. Start referring today!
                 </p>
                 <button
+                disabled
                   href="#"
                   data-toggle="modal"
                   data-target="#exampleModalCenter"
@@ -135,7 +140,6 @@
                 >
                   Refer A Friend
                 </button>
-                
                 <div
                   class="modal fade"
                   id="exampleModalCenter"
@@ -220,7 +224,7 @@
                   expand our listings and assist others in finding their ideal
                   living spaces. Start referring now to unlock benefits!
                 </p>
-                <button
+                <button disabled
                   href="#"
                   id="referspace"
                   data-toggle="modal"
@@ -307,7 +311,7 @@
               />
             </div>
             <div class="my-2">
-              <button
+              <button disabled
                 class="btn btn-primary ms-sm-2"
                 id="send-btn"
                 type="submit"
@@ -327,29 +331,29 @@
         <div class="services__card">
           <h2>Pending
           </h2>
-          <p>- Your referrals are in pending status by default</p>
-          <p>- You earn no money at this state</p>
+          <p>Your referrals are in pending status by default</p>
+          <p>You earn no money at this state</p>
         </div>
         <div class="services__card">
           <h2>APPROVED</h2>
-          <p>- When we approach the owner and he agrees, Status of the referred space changes from Pending to Approved
+          <p>When we approach the owner and he agrees, Status of the referred space changes from Pending to Approved
           </p>
-          <p>- You'll earn Rs.321 at this state</p>
+          <p>You'll earn Rs.321 at this state</p>
         </div>
         <div class="services__card">
           <h2>Sold
           </h2>
-          <p>- Once we get tenants for the space referred by you, the status changes to Sold
+          <p>Once we get tenants for the space referred by you, the status changes to Sold
           </p>
-          <p>-  You can earn from anywhere between 1000 to 2691
+          <p>You can earn from anywhere between 1000 to 2691
           </p>
         </div>
         <div class="services__card">
           <h2>Rejected</h2>
-          <p>- Your referrals could be rejected due to various reasons
+          <p>Your referrals could be rejected due to various reasons
           </p>
-          <p> - For instance, owners not approving, space is already referred by other user, etc.</p>
-          <p>- You earn no money at this state</p>
+          <p>For instance, owners not approving, space is already referred by other user, etc.</p>
+          <p>You earn no money at this state</p>
         </div>
       </div>
     </div>
@@ -694,21 +698,22 @@
         const req = document.getElementById("req");
 
         if (sessionStorage.getItem("user")) {
-          signin.style.display = "none";
           signout.style.display = "block";
+          
+          refers.disabled = false;
+          referf.disabled = false;
+          sendbtn.disabled = false;
           heading.innerHTML =
             "<span>Hi </span>" + sessionStorage.getItem("name") + ",";
           const code = document.getElementById("code");
 
           code.innerHTML = sessionStorage.getItem("code");
         } else {
-          signout.style.display = "none";
+          
           signin.style.display = "block";
-          // heading.innerHTML = "<span>Sign in </span> To Continue";
-          refers.disabled = true;
+          heading.innerHTML = "<span>Sign in </span> To Continue";
           refers.innerText = "Sign in to refer";
-          referf.disabled = true;
-          sendbtn.disabled = true;
+          referf.innerText = "Sign in to refer";
           req.style.display = "none";
         }
       }
