@@ -138,7 +138,7 @@
                   class="btn btn-primary"
                   id="refer_friend"
                 >
-                  Refer A Friend
+                Sign in to refer
                 </button>
                 <div
                   class="modal fade"
@@ -231,7 +231,7 @@
                   data-target="#xampleModalCenter"
                   class="btn btn-primary"
                 >
-                  Refer A Space
+                  Sign in to refer
                 </button>
                 <div
                   class="modal fade"
@@ -703,6 +703,8 @@
           refers.disabled = false;
           referf.disabled = false;
           sendbtn.disabled = false;
+          refers.innerText = "Refer A Space";
+          referf.innerText = "Refer A friend";
           heading.innerHTML =
             "<span>Hi </span>" + sessionStorage.getItem("name") + ",";
           const code = document.getElementById("code");
@@ -712,8 +714,7 @@
           
           signin.style.display = "block";
           heading.innerHTML = "<span>Sign in </span> To Continue";
-          refers.innerText = "Sign in to refer";
-          referf.innerText = "Sign in to refer";
+          
           req.style.display = "none";
         }
       }
