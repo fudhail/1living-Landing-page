@@ -79,28 +79,27 @@
 
         <ul class="navbar__menu">
           <li>
-            <div
-              id="g_id_onload"
-              data-client_id="214439007810-h85ano8dmtuojt8tapmvnc2gnjgmq3j6.apps.googleusercontent.com"
-              data-context="signin"
-              data-ux_mode="popup"
-              data-callback="handleCredentialResponse"
-              data-auto_prompt="false"
-            ></div>
-
-            <div
-              id="signin-button"
-              class="g_id_signin"
-              data-type="standard"
-              data-shape="rectangular"
-              data-theme="outline"
-              data-text="signin_with"
-              data-size="large"
-              data-logo_alignment="left"
-            ></div>
+            <div id="g_id_onload"
+            data-client_id="214439007810-h85ano8dmtuojt8tapmvnc2gnjgmq3j6.apps.googleusercontent.com"
+            data-context="signin"
+            data-ux_mode="popup"
+            data-callback="handleCredentialResponse"
+            data-close_on_tap_outside="false"
+            data-itp_support="true">
+       </div>
+       
+       <div class="g_id_signin"
+            data-type="standard"
+            data-shape="rectangular"
+            data-theme="outline"
+            data-text="signin_with"
+            data-size="large"
+            data-logo_alignment="left">
+       </div>
           </li>
-          <li class="navbar__btn">
+          <li class="navbar__btn"  >
             <a
+            style="display: none;"
               id="signout-button"
               class="button"
               onclick="signOut()"
@@ -115,7 +114,7 @@
     <!-- Hero Section -->
     <div class="hero" id="home">
       <div class="hero__container">
-        <h1 class="hero__heading" id="heading"></h1>
+        <h1 class="hero__heading" id="heading"><Span>Sign in</Span> to Continue</h1>
 
         <div class="row">
           <div class="col-sm-6">
@@ -136,6 +135,7 @@
                 >
                   Refer A Friend
                 </button>
+                
                 <div
                   class="modal fade"
                   id="exampleModalCenter"
@@ -704,8 +704,9 @@
         } else {
           signout.style.display = "none";
           signin.style.display = "block";
-          heading.innerHTML = "<span>Sign in </span> To Continue";
+          // heading.innerHTML = "<span>Sign in </span> To Continue";
           refers.disabled = true;
+          refers.innerText = "Sign in to refer";
           referf.disabled = true;
           sendbtn.disabled = true;
           req.style.display = "none";
