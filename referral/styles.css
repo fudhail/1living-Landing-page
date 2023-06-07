@@ -349,7 +349,9 @@ p {
     margin: 0 auto;
     height: 90%;
   }
-
+.btnnn{
+  margin-top: 1rem;
+}
   .main__img--container {
     display: flex;
     justify-content: center;
