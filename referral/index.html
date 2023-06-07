@@ -200,6 +200,7 @@
                               onclick="myFunction()"
                               onmouseout="outFunc()"
                               src="Copy-btn.png"
+                              alt="friends"
                             />
                             <span
                               class="tooltiptext"
@@ -235,7 +236,7 @@
                 >
                   Refer a space
                 </button>
-                <h6 id="referf_error" class="error" onclick="sign()">*Sign in To Continue</h6>
+                <h6 id="refers_error" class="error" onclick="sign()">*Sign in To Continue</h6>
                 <div
                   class="modal fade"
                   id="xampleModalCenter"
@@ -716,6 +717,8 @@
         const signout = document.getElementById("signout-button");
         const heading = document.getElementById("heading");
         const refers = document.getElementById("referspace");
+        const referf_error = document.getElementById("referf_error");
+        const refers_error = document.getElementById("refers_error");
         const referf = document.getElementById("refer_friend");
         const sendbtn = document.getElementById("send-btn");
         const req = document.getElementById("req");
@@ -727,6 +730,8 @@
           refers.data = false;
           referf.disabled = false;
           sendbtn.disabled = false;
+          referf_error.style.display="none";
+          refers_error.style.display="none";
           refers.innerText = "Refer A Space";
           referf.innerText = "Refer A friend";
           heading.innerHTML =
@@ -738,7 +743,7 @@
           
           signin.style.display = "block";
           heading.innerHTML = '<span onclick="sign()"">Sign in </span> To Continue';
-          
+      
           req.style.display = "none";
         }
       }
