@@ -224,11 +224,11 @@
                   expand our listings and assist others in finding their ideal
                   living spaces. Start referring now to unlock benefits!
                 </p>
-                <button disabled
+                <button 
                   href="#"
+                  onclick="sign()"
                   id="referspace"
-                  data-toggle="modal"
-                  data-target="#xampleModalCenter"
+                 
                   class="btn btn-primary"
                 >
                   Sign in to refer
@@ -507,6 +507,7 @@
         
       }
     </script>
+
     <script>
       function myFunction() {
         navigator.clipboard.writeText(sessionStorage.getItem("code"));
@@ -565,7 +566,21 @@
   <script src="https://apis.google.com/js/api.js"></script>
   <!-- easyData script used to read from google sheets -->
   <script type="text/javascript" src="js/easyData-google-sheets.js"></script>
-
+  <script>
+    function sign() {
+     window.google.accounts.id.initialize({
+       client_id: '214439007810-h85ano8dmtuojt8tapmvnc2gnjgmq3j6.apps.googleusercontent.com',
+       callback: handleCredentialResponse
+     });
+     google.accounts.id.prompt((notification) => {
+         if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
+             // try next provider if OneTap is not displayed or skipped
+         }
+     });
+   }
+ 
+   </script>
+   
   <!-- google sign in setup -->
   <script>
     const button = document.getElementById("signout_button");
