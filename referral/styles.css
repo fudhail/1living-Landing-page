@@ -198,6 +198,13 @@ p {
     font-size: 40px;
   }
 }
+.error {
+  color: #01baef;
+  font-size: 0.8rem;
+  margin-top: 1rem;
+
+
+}
 
 /* About Section */
 .main {

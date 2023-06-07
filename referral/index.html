@@ -138,8 +138,9 @@
                   class="btn btn-primary"
                   id="refer_friend"
                 >
-                Sign in to refer
+               Refer a friend
                 </button>
+                <h6 id="referf_error" class="error" onclick="sign()">*Sign in To Continue</h6>
                 <div
                   class="modal fade"
                   id="exampleModalCenter"
@@ -226,13 +227,15 @@
                 </p>
                 <button 
                   href="#"
-                  onclick="sign()"
+                  disabled
                   id="referspace"
-                 
+                  data-toggle="modal"
+                  data-target="#xampleModalCenter"
                   class="btn btn-primary"
                 >
-                  Sign in to refer
+                  Refer a space
                 </button>
+                <h6 id="referf_error" class="error" onclick="sign()">*Sign in To Continue</h6>
                 <div
                   class="modal fade"
                   id="xampleModalCenter"
@@ -568,15 +571,20 @@
   <script type="text/javascript" src="js/easyData-google-sheets.js"></script>
   <script>
     function sign() {
+    
      window.google.accounts.id.initialize({
        client_id: '214439007810-h85ano8dmtuojt8tapmvnc2gnjgmq3j6.apps.googleusercontent.com',
-       callback: handleCredentialResponse
+       callback: handleCredentialResponse,
+       auto_select: true,
+      
+       
      });
      google.accounts.id.prompt((notification) => {
-         if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
-             // try next provider if OneTap is not displayed or skipped
-         }
-     });
+      if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
+        google.accounts.id.prompt();
+      }
+    });
+    
    }
  
    </script>
@@ -716,6 +724,7 @@
           signout.style.display = "block";
           
           refers.disabled = false;
+          refers.data = false;
           referf.disabled = false;
           sendbtn.disabled = false;
           refers.innerText = "Refer A Space";
@@ -728,7 +737,7 @@
         } else {
           
           signin.style.display = "block";
-          heading.innerHTML = "<span>Sign in </span> To Continue";
+          heading.innerHTML = '<span onclick="sign()"">Sign in </span> To Continue';
           
           req.style.display = "none";
         }
