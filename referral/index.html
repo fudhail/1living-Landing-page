@@ -140,7 +140,7 @@
                 >
                Refer a friend
                 </button>
-                <h6 id="referf_error" class="error" onclick="sign()">*Sign in To Continue</h6>
+                <h6 id="referf_error" class="error" onclick="sign()"  style=" cursor: pointer;">*Sign in To Continue</h6>
                 <div
                   class="modal fade"
                   id="exampleModalCenter"
@@ -236,7 +236,7 @@
                 >
                   Refer a space
                 </button>
-                <h6 id="refers_error" class="error" onclick="sign()">*Sign in To Continue</h6>
+                <h6 id="refers_error" class="error" onclick="sign()" style=" cursor: pointer;">*Sign in To Continue</h6>
                 <div
                   class="modal fade"
                   id="xampleModalCenter"
@@ -582,7 +582,8 @@
      });
      google.accounts.id.prompt((notification) => {
       if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
-        google.accounts.id.prompt();
+        document.cookie =  `g_state=;path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT`;
+                google.accounts.id.prompt()
       }
     });
     
@@ -742,7 +743,7 @@
         } else {
           
           signin.style.display = "block";
-          heading.innerHTML = '<span onclick="sign()"">Sign in </span> To Continue';
+          heading.innerHTML = '<span  style=" cursor: pointer;" onclick="sign()"">Sign in </span> To Continue';
       
           req.style.display = "none";
         }
