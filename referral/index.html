@@ -537,7 +537,9 @@
               "&referedthrough=not refered",
             method: "post",
             success: function (response) {
+              sessionStorage.setItem("code", uniqueCode);
               location.reload();
+              
             },
             error: function (err) {
               alert("Something Error");
